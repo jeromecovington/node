@@ -4,7 +4,7 @@
 // Promises, nextTick, and queueMicrotask allow code to escape the timeout
 // set for runInContext, runInNewContext, and runInThisContext
 
-require('../common');
+const common = require('../common');
 const assert = require('assert');
 const vm = require('vm');
 
@@ -31,7 +31,7 @@ assert.throws(() => {
       hrtime,
       loop
     },
-    { timeout: 5 }
+    { timeout: common.platformTimeout(5) }
   );
 }, {
   code: 'ERR_SCRIPT_EXECUTION_TIMEOUT',
